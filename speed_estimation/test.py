@@ -4,7 +4,7 @@ import os
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
-import speed_detection
+import speed_estimation
 from PIL import Image
 
 speed_list = {}
@@ -24,7 +24,7 @@ for fname in sorted(glob.glob("*.png")):
         box = cv2.boxPoints(rect)
         boxes.append(box)
 
-    speed_list, label_start = speed_detection.parse_frame(boxes, speed_list, label_start, 10)
+    speed_list, label_start = speed_estimation.parse_frame(boxes, speed_list, label_start, 10)
 
     t = np.zeros_like(im)
     for box in boxes:
